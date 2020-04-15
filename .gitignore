@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/HttpJsonBenchmarks
+/client/bin/Debug/netcoreapp5.0
+/client/obj
+/server/bin/Debug/netcoreapp5.0
+/server/obj
+/server/Properties
+/server/WeatherForecast.csproj.user

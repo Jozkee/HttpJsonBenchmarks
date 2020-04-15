@@ -3,4 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp5.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\shared\WeatherForecast.cs" Link="WeatherForecast.cs" />
+  </ItemGroup>
 </Project>

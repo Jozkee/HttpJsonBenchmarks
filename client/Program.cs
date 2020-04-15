@@ -4,12 +4,13 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Shared;
 
 namespace HttpJsonClient
 {
     class Program
     {
-        private static HttpClient Http = new HttpClient();
+        private static readonly HttpClient Http = new HttpClient();
 
         static async Task Main(string[] args)
         {
