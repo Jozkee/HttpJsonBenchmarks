@@ -29,6 +29,8 @@ jobs:
         classType: ""
         path: ""
     arguments: "{{warmup}} {{duration}} {{newJson}} {{method}} {{classType}} {{protocol}}://{{serverUri}}:{{serverPort}}/{{path}}"
+    runtimeVersion: "3.1.0"
+    sdkVersion: "3.1.100"
     options:
       displayOutput: true
       
