@@ -1,0 +1,72 @@
+﻿# Examples:
+# --config benchmarks.compose.yml --scenario plaintext --variable serverUri=http://10.0.0.102
+
+variables:
+    protocol: http
+    serverPort: 5000
+
+jobs:
+  weatherapp:
+    source:
+      repository: https://github.com/Jozkee/HttpJsonBenchmarks.git
+      branchOrCommit: master
+      project: server/WeatherForecast.csproj
+    readyStateText: Application started.
+    arguments: "--urls {{protocol}}://[*]:{{serverPort}}"
+    options:
+      displayOutput: true
+  client:
+    source:
+      repository: https://github.com/Jozkee/HttpJsonBenchmarks.git
+      branchOrCommit: master
+      project: client/HttpJsonClient.csproj
+    waitForExit: true
+    variables:
+        warmup: 15
+        duration: 15
+        newJson: true
+        method: ""
+        classType: ""
+        path: ""
+    arguments: "{{warmup}} {{duration}} {{newJson}} {{method}} {{classType}} {{protocol}}://{{serverUri}}:{{serverPort}}/{{path}}"
+    options:
+      displayOutput: true
+      
+scenarios:
+  get.object:
+    server:
+      job: weatherapp
+    client:
+      job: client
+      variables:
+        method: "get"
+        classType: "object"
+        path: "WeatherForecast/getObject"
+  get.collection:
+    server:
+      job: weatherapp
+    client:
+      job: client
+      variables:
+        method: "get"
+        classType: "collection"
+        path: "WeatherForecast/getCollection"
+
+  post.object:
+    server:
+      job: weatherapp
+    client:
+      job: client
+      variables:
+        method: "post"
+        classType: "object"
+        path: "WeatherForecast/postObject"
+  post.collection:
+    server:
+      job: weatherapp
+    client:
+      job: client
+      variables:
+        method: "post"
+        classType: "collection"
+        path: "WeatherForecast/postCollection"
